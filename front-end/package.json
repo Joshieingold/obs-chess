@@ -1,0 +1,19 @@
+{
+    "name": "front-end",
+    "version": "1.0.0",
+    "description": "Front end for chess streamer software",
+    "license": "ISC",
+    "author": "Joshua Lynch",
+    "type": "commonjs",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "electron": "^41.2.1"
+    },
+    "dependencies": {
+        "electron-reload": "^2.0.0-alpha.1"
+    }
+}

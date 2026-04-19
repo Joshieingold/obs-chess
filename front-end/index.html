@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="./styles.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'"
+        />
+        <meta
+            http-equiv="X-Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'"
+        />
+        <title>Live Chess Stats</title>
+    </head>
+    <body>
+        <div class="side-bar">
+            <div id="home" class="side-bar-item">
+                <img />
+            </div>
+            <div id="obs-variables" class="side-bar-item">
+                <img />
+            </div>
+        </div>
+        <div class="page hidden">
+            <h1>Connect to OBS</h1>
+            <div class="control-container">
+                <label for="obs-ip-input">OBS IP: </label>
+                <input id="obs-ip-input" />
+            </div>
+            <div class="control-container">
+                <label for="obs-password-input">OBS Password: </label>
+                <input id="obs-password-input" />
+            </div>
+        </div>
+        <div class="page">
+            <h1>MateTracker OBS</h1>
+            <div class="controls">
+                <div class="control-container">
+                    <label for="username-input">Username: </label>
+                    <input id="username-input" />
+                </div>
+                <div class="control-container">
+                    <label for="obs-target-text-input"
+                        >Target OBS Label Name:
+                    </label>
+                    <input id="obs-target-text-input" />
+                </div>
+                <div class="control-container">
+                    <label for="request-delay-input"
+                        >Time Between Requests:
+                    </label>
+                    <input type="number" id="request-delay-input" />
+                </div>
+                <div class="control-container">
+                    <label for="time-control-input">Time Control: </label>
+                    <select id="time-control-input">
+                        <option value="rapid">Rapid</option>
+                        <option value="blitz">Blitz</option>
+                        <option value="bullet">Bullet</option>
+                        <option value="all">All</option>
+                    </select>
+                </div>
+                <div class="control-container">
+                    <label for="between-date-container">Data Range: </label>
+                    <div id="between-date-container">
+                        <input type="date" id="start-date-input" />
+                        <input type="date" id="end-date-input" />
+                    </div>
+                </div>
+            </div>
+            <button id="start-stop-button" class="not-running">run</button>
+        </div>
+    </body>
+</html>

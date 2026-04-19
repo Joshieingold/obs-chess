@@ -16,9 +16,9 @@
         sans-serif;
 
     --font-color: white;
-    --background-color: black;
-    --alt-background-color: gray;
-    --hover-color: orange;
+    --background-color: #2f343f;
+    --alt-background-color: #3d4453;
+    --hover-color: #1e2233;
     --default-radius: 7px;
     --default-border: 1px solid white;
     --default-shadow:
@@ -100,4 +100,21 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+.side-bar-item {
+    padding: 5px;
+    width: 100%;
+    align-items: center;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+.side-bar-item:hover {
+    background-color: var(--hover-color);
+}
+.selected {
+    background-color: var(--hover-color);
 }

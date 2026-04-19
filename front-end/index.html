@@ -12,26 +12,16 @@
             http-equiv="X-Content-Security-Policy"
             content="default-src 'self'; script-src 'self'"
         />
+        <script src="./renderer.js"></script>
         <title>Live Chess Stats</title>
     </head>
     <body>
         <div class="side-bar">
-            <div id="home" class="side-bar-item">
-                <img />
+            <div id="home" class="side-bar-item selected">
+                <img src="./assets/home.png" />
             </div>
             <div id="obs-variables" class="side-bar-item">
-                <img />
-            </div>
-        </div>
-        <div class="page hidden">
-            <h1>Connect to OBS</h1>
-            <div class="control-container">
-                <label for="obs-ip-input">OBS IP: </label>
-                <input id="obs-ip-input" />
-            </div>
-            <div class="control-container">
-                <label for="obs-password-input">OBS Password: </label>
-                <input id="obs-password-input" />
+                <img src="./assets/settings.png" />
             </div>
         </div>
         <div class="page">
@@ -71,6 +61,20 @@
                 </div>
             </div>
             <button id="start-stop-button" class="not-running">run</button>
+        </div>
+        <div class="page hidden">
+            <h1>Connect to OBS</h1>
+            <div class="controls">
+                <div class="control-container">
+                    <label for="obs-ip-input">OBS IP: </label>
+                    <input id="obs-ip-input" />
+                </div>
+                <div class="control-container">
+                    <label for="obs-password-input">OBS Password: </label>
+                    <input id="obs-password-input" />
+                </div>
+            </div>
+            <button id="save-env">Save</button>
         </div>
     </body>
 </html>

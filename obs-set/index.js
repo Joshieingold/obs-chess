@@ -12,18 +12,48 @@ let currentSettings = null;
 // API Call
 //////////////////////
 
-async function GetUpdatedStats(username) {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
+async function GetUpdatedStats(username, startDate, endDate) {
+    const months = GetMonthsInRange(startDate, endDate);
+    const allGames = [];
 
-    const url = `https://api.chess.com/pub/player/${username}/games/${year}/${month}`;
-    const res = await fetch(url);
-    const data = await res.json();
+    const startTime = startDate.getTime();
+    const endTime = endDate.getTime();
 
-    if (!data.games || data.games.length === 0) return null;
+    for (let i = 0; i < months.length; i++) {
+        const { year, month } = months[i];
+        const url = `https://api.chess.com/pub/player/${username}/games/${year}/${month}`;
 
-    return data.games;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        for (let j = 0; j < data.games.length; j++) {
+            const gameTime = data.games[j].end_time * 1000;
+
+            if (gameTime >= startTime && gameTime <= endTime) {
+                allGames.push(data.games[j]);
+            }
+        }
+    }
+
+    return allGames.length ? allGames : null;
+}
+
+function GetMonthsInRange(startDate, endDate) {
+    const result = [];
+    const current = new Date(startDate);
+
+    current.setDate(1); // normalize to start of month
+
+    while (current <= endDate) {
+        result.push({
+            year: current.getFullYear(),
+            month: current.getMonth() + 1, // 0-based → 1-based
+        });
+
+        current.setMonth(current.getMonth() + 1);
+    }
+
+    return result;
 }
 
 //////////////////////

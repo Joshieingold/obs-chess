@@ -6,7 +6,7 @@ window.onload = function () {
 };
 
 function GetSettingsData() {
-    let url = "../settings.json";
+    let url = "./settings.json";
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {

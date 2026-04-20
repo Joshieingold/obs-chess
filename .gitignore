@@ -1,3 +1,2 @@
 /.env
-./front-end/node_modules/
-/front-end/node_modules
+/node_modules

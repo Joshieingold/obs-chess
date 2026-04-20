@@ -69,6 +69,7 @@ input {
     box-shadow: var(--default-shadow);
     border: var(--default-border);
     width: 150px;
+    text-align: center;
     height: 30px;
 }
 button {

@@ -3,8 +3,23 @@ let settings;
 window.onload = function () {
     GetSettingsData();
     document.querySelector(".side-bar").addEventListener("click", SwitchScreen);
+    document
+        .querySelector("#start-stop-button")
+        .addEventListener("click", HandleStart);
 };
 
+function HandleStart() {
+    UpdateSettingsFile(JSON.stringify(settings));
+    StartConnection();
+}
+function StartConnection() {
+    window.myBridge.StartConnection();
+}
+
+function UpdateSettingsFile(jsonString) {
+    console.log("Setting the json is not yet implemented");
+    window.myBridge.UpdateSettingsFile(jsonString);
+}
 function GetSettingsData() {
     let url = "./settings.json";
     let xhr = new XMLHttpRequest();
@@ -63,7 +78,6 @@ function LoadInputs() {
             break;
         }
     }
-
     let startDateRef = document.querySelector("#start-date-input");
     let endDateRef = document.querySelector("#end-date-input");
 }

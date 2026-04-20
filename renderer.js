@@ -9,17 +9,16 @@ window.onload = function () {
 };
 
 function HandleStart() {
-    UpdateSettingsFile(JSON.stringify(settings));
+    settings.username = document.querySelector("#username-input").value;
+    settings.obsLabel = document.querySelector("#obs-target-text-input").value;
+    settings.requestRate = document.querySelector("#request-delay-input").value;
+    settings.timeControl = document.querySelector("#time-control-input").value;
     StartConnection();
 }
 function StartConnection() {
-    window.myBridge.StartConnection();
+    window.myBridge.StartConnection(settings);
 }
 
-function UpdateSettingsFile(jsonString) {
-    console.log("Setting the json is not yet implemented");
-    window.myBridge.UpdateSettingsFile(jsonString);
-}
 function GetSettingsData() {
     let url = "./settings.json";
     let xhr = new XMLHttpRequest();

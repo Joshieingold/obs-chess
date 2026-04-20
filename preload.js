@@ -1,8 +1,8 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
 let myBridge = {
-    StartConnection: async () => {
-        return await ipcRenderer.invoke("StartConnection");
+    StartConnection: async (data) => {
+        return await ipcRenderer.invoke("StartConnection", data);
     },
     UpdateSettingsFile: async (data) => {
         return await ipcRenderer.invoke("UpdateSettingsFile", data);

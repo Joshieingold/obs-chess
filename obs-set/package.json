@@ -1,0 +1,17 @@
+{
+    "name": "obs-set",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^17.4.2",
+        "node-fetch": "^3.3.2",
+        "obs-websocket-js": "^5.0.8"
+    }
+}

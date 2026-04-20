@@ -2,12 +2,23 @@
     "name": "chess-obs",
     "version": "1.0.0",
     "description": "",
-    "main": "socket.js",
+    "homepage": "https://github.com/Joshieingold/obs-chess#readme",
+    "bugs": {
+        "url": "https://github.com/Joshieingold/obs-chess/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Joshieingold/obs-chess.git"
+    },
+    "license": "ISC",
+    "author": "Joshua Lynch",
+    "type": "commonjs",
+    "main": "main.js",
     "scripts": {
+        "start": "electron .",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "type": "module"
+    "devDependencies": {
+        "electron": "^41.2.1"
+    }
 }

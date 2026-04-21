@@ -1,5 +1,6 @@
 const OBSWebSocket = require("obs-websocket-js").default;
 const dotenv = require("dotenv");
+const fs = require("fs");
 
 dotenv.config();
 
@@ -91,6 +92,9 @@ function FormatStats(allGames, settings) {
 
     return `${wins} Wins - ${draws} Draws - ${loses} Losses`;
 }
+function SaveSettings(settings) {
+    fs.writeFileSync("../settings.json", JSON.stringify(settings, null, 2));
+}
 
 function GetDetermination(result) {
     if (result === "win") return "win";
@@ -144,6 +148,7 @@ async function start(settings) {
     }
 
     currentSettings = settings;
+    SaveSettings(currentSettings);
 
     await ConnectOBS();
 

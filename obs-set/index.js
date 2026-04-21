@@ -13,16 +13,17 @@ let currentSettings = null;
 //////////////////////
 
 async function GetUpdatedStats(username, startDate, endDate) {
-    const months = GetMonthsInRange(startDate, endDate);
     const allGames = [];
 
+    startDate = new Date(startDate);
+    endDate = new Date(endDate);
+    const months = GetMonthsInRange(startDate, endDate);
     const startTime = startDate.getTime();
     const endTime = endDate.getTime();
 
     for (let i = 0; i < months.length; i++) {
         const { year, month } = months[i];
-        const url = `https://api.chess.com/pub/player/${username}/games/${year}/${month}`;
-
+        const url = `https://api.chess.com/pub/player/${username}/games/${year}/${String(month).padStart(2, "0")}`;
         const res = await fetch(url);
         const data = await res.json();
 
@@ -34,7 +35,6 @@ async function GetUpdatedStats(username, startDate, endDate) {
             }
         }
     }
-
     return allGames.length ? allGames : null;
 }
 
@@ -64,6 +64,10 @@ function FormatStats(allGames, settings) {
     let wins = 0;
     let draws = 0;
     let loses = 0;
+
+    if (allGames === null) {
+        return `${wins} Wins - ${draws} Draws - ${loses} Losses`;
+    }
 
     for (let i = 0; i < allGames.length; i++) {
         let game = allGames[i];
@@ -145,13 +149,17 @@ async function start(settings) {
 
     intervalId = setInterval(async () => {
         try {
-            const games = await GetUpdatedStats(settings.username);
-            if (!games) return;
+            const games = await GetUpdatedStats(
+                settings.username,
+                settings.startDate,
+                settings.endDate,
+            );
+            if (!games) {
+                console.log("found no games!");
+            }
 
             const text = FormatStats(games, settings);
-
             console.log("Updating:", text);
-
             await UpdateOBS(text, settings);
         } catch (err) {
             console.error(err);

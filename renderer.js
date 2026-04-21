@@ -13,6 +13,8 @@ function HandleStart() {
     settings.obsLabel = document.querySelector("#obs-target-text-input").value;
     settings.requestRate = document.querySelector("#request-delay-input").value;
     settings.timeControl = document.querySelector("#time-control-input").value;
+    settings.startDate = document.querySelector("#start-date-input").value;
+    settings.endDate = document.querySelector("#end-date-input").value;
     StartConnection();
 }
 function StartConnection() {
